@@ -1,5 +1,5 @@
 ###############################################################################
-# << FILE MANAGED BY PUPPET >>
+rtificates.crt FILE MANAGED BY PUPPET >>
 # Manual changes are likey to be overwritten
 ###############################################################################
 
@@ -47,9 +47,10 @@ sudoers_debug         <%= @sudoers_debug %>
 <% end -%>
 
 <% if @ssl == true then -%>
-ssl           start_tls
+# ssl           start_tls
 tls_reqcert   demand
-tls_cacertdir <%= scope.lookupvar('ldap::params::cacertdir') %>
+tls_cacert    /etc/ssl/certs/ca-certificates.crt
+# tls_cacertdir <%= scope.lookupvar('ldap::params::cacertdir') %>
 <% else -%>
 #ssl           start_tls
 #tls_reqcert   never
